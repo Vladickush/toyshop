@@ -1,0 +1,31 @@
+
+(venv) PS C:\Users\HP\PycharmProjects\module_19> cd toyshop
+
+(venv) PS C:\Users\HP\PycharmProjects\module_19\toyshop> python manage.py shell
+Python 3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+
+>>> from task1.models import *
+
+>>> Buyer.objects.create(name='Ilya', balance= 1500.05, age= 24)
+<Buyer: Ilya>
+>>> Buyer.objects.create(name='Terminator2000', balance= 42.1, age= 52)
+<Buyer: Terminator2000>
+>>> Buyer.objects.create(name = 'Ubivator432', balance= 0.5, age= 16)
+<Buyer: Ubivator432>
+
+>>> Game.objects.create(title = 'Cyberpunk 2077', cost =31, size = 46.2, description= 'Game of the year', age_limited = True)
+<Game: Cyberpunk 2077>
+>>> Game.objects.create(title= 'Mario', cost=5, size=0.5, description = 'Old game', age_limited = False)
+<Game: Mario>
+>>> Game.objects.create(title='Hitman', cost = 12, size = 36.6, description = 'Who kills Mark?', age_limited = True)
+<Game: Hitman>
+
+>>> first_buyer=Buyer.objects.get(id=1)
+>>> second_buyer=Buyer.objects.get(id=2)
+>>> third_buyer=Buyer.objects.get(id=3)
+>>> Game.objects.get(id=1).buyers.set((first_buyer, second_buyer))
+>>> Game.objects.get(id=2).buyers.set((first_buyer, third_buyer))
+>>> Game.objects.get(id=3).buyers.set((first_buyer, second_buyer))
+>>> exit()
