@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "fourth_task/menu.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+{% block pagename %}
+    <h1>Игры</h1>
+{% endblock %}
+
+{% block menu %}
+    {{block.super}}
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for game in games %}
+         {{ game.title }} | {{ game.description }}. Стоимость: {{ game.cost }}
+        <button>Купить</button>
+        <br>
+        {% endfor %}
+    </ul>
+
+    <form action="/platform" target="_self">
+        <button class="btn">Вернуться на главную страницу</button></form>
+
+    {% endblock %}
+
+</body>
+</html>
