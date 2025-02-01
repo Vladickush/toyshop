@@ -18,8 +18,3 @@ class BuyerAdmin(admin.ModelAdmin):
     list_per_page = 30                         #Ограничение кол-ва записей до 30.
     readonly_fields = ('balance',)             #Доступным только для чтения поле balance.
 
-#python manage.py createsuperuser
-# Логин - Vlad, пароль - 12345678
-#python manage.py runserver
-
-
