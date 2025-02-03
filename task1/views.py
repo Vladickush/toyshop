@@ -1,7 +1,16 @@
-from .models import Buyer, Game
+from .models import Buyer, Game, News
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import UserRegister
+from django.core.paginator import Paginator
+
+
+def news(request):
+    news = News.objects.all() #.order_by('-date')  # 'date' - это поле определено в модели class News
+    paginator = Paginator(news, 3)  # эти три строки кода
+    page_number = request.GET.get('page')  # являются базовой реализацией
+    page_obj = paginator.get_page(page_number)  # Paginator
+    return render(request, 'fourth_task/news.html', {'page_obj': page_obj})
 
 
 def platform(request):
@@ -16,6 +25,7 @@ def games(request):
 
 def cart(request):
     return render(request, "fourth_task/cart.html")
+
 
 # Из базы данных
 def sign_up_by_html(request):
